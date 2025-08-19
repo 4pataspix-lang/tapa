@@ -1,7 +1,7 @@
 // filepath: src/components/Header.tsx
 import { Link } from 'react-router-dom';
 import { ShoppingCart } from 'lucide-react';
-import { useCart } from '../hooks/useCart';
+import { useCart } from '../contexts/CartContext';
 
 export function Header() {
   const { cart } = useCart();
