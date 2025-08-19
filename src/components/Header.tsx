@@ -35,8 +35,9 @@ export function Header() {
         <img
           src={bannerUrl}
           alt="Banner da loja"
-          className="w-full max-h-40 sm:max-h-56 md:max-h-72 lg:max-h-80 xl:max-h-96 object-contain object-top m-0 p-0 border-0"
-          style={{ minHeight: 80, width: '100%', margin: 0, padding: 0, display: 'block', position:'relative', top:0, left:0, zIndex:2 }}
+          className="w-full object-contain object-top m-0 p-0 border-0"
+          style={{ minHeight: 80, width: '100%', margin: 0, padding: 0, display: 'block', position:'relative', top:0, left:0, zIndex:2, maxHeight: '160px', maxWidth: '100vw' }}
+          sizes="100vw"
           onLoad={()=>setBannerLoaded(true)}
           onError={()=>setBannerLoaded(true)}
         />
@@ -45,7 +46,12 @@ export function Header() {
         <div className="container mx-auto px-0 py-4 flex justify-between items-center m-0 p-0" style={{margin:0,padding:0}}>
           {/* Logo da loja */}
           <Link to="/" className="flex items-center">
-            <img src={logoUrl} alt="Logo" className="h-10 w-auto mr-2" />
+            <img 
+              src={logoUrl} 
+              alt="Logo" 
+              className="h-8 w-auto sm:h-10 mr-2" 
+              style={{maxHeight:32, height:'2rem'}}
+            />
             {/* Se quiser texto junto da logo, descomente a linha abaixo */}
             {/* <span className="text-2xl font-bold text-gray-800">Sua Loja</span> */}
           </Link>
