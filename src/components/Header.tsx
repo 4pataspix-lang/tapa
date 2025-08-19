@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import { ShoppingCart } from 'lucide-react';
 import { useCart } from '../contexts/CartContext';
 
+
 export function Header() {
-  const { cart } = useCart();
-  const cartItemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const { items } = useCart();
+  const cartItemCount = (items ?? []).reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <>
