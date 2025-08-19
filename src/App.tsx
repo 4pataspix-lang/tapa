@@ -5,6 +5,7 @@ import { CartProvider } from './contexts/CartContext';
 import { StoreProvider } from './contexts/StoreContext';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { Header } from './components/Header';
+import { Footer } from './components/Footer';
 
 // Public pages
 import { Home } from './pages/Home';
@@ -15,6 +16,9 @@ import { Checkout } from './pages/Checkout';
 import { OrderConfirmation } from './pages/OrderConfirmation';
 import { PaymentCallback } from './pages/PaymentCallback';
 import { ThankYou } from './pages/ThankYou';
+import { About } from './pages/About';
+import { Contact } from './pages/Contact';
+import { Faq } from './pages/Faq';
 
 // Admin pages
 import { AdminLogin } from './pages/admin/Login';
@@ -33,7 +37,7 @@ function App() {
       <AuthProvider>
         <CartProvider>
           <Router>
-            <div className="min-h-screen bg-gray-50">
+            <div className="min-h-screen bg-gray-50 flex flex-col">
               <Routes>
                 {/* Public Routes */}
                 <Route path="/*" element={
@@ -48,7 +52,11 @@ function App() {
                       <Route path="/order-confirmation" element={<OrderConfirmation />} />
                       <Route path="/payment-callback" element={<PaymentCallback />} />
                       <Route path="/thank-you" element={<ThankYou />} />
+                      <Route path="/about" element={<About />} />
+                      <Route path="/contact" element={<Contact />} />
+                      <Route path="/faq" element={<Faq />} />
                     </Routes>
+                    <Footer />
                   </>
                 } />
 

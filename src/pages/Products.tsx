@@ -6,7 +6,7 @@ import { Product as ProductType } from '../types/Product';
 import { useCart } from '../hooks/useCart';
 import { toast } from 'sonner';
 
-export function Product() {
+export function Products() {
   const { id } = useParams<{ id: string }>();
   const [product, setProduct] = useState<ProductType | null>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
