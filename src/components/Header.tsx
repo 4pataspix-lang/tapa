@@ -1,19 +1,25 @@
 // filepath: src/components/Header.tsx
+
 import { Link } from 'react-router-dom';
 import { ShoppingCart } from 'lucide-react';
 import { useCart } from '../contexts/CartContext';
+import { useStore } from '../contexts/StoreContext';
 
 
 export function Header() {
   const { items } = useCart();
   const cartItemCount = (items ?? []).reduce((sum, item) => sum + item.quantity, 0);
+  const { settings } = useStore();
+
+  // Banner dinâmico: usa o header_banner_url se existir, senão banner_url, senão fallback
+  const bannerUrl = settings?.header_banner_url || settings?.banner_url || '/banner.jpg';
 
   return (
     <>
-      {/* Banner visual restaurado */}
+      {/* Banner dinâmico da loja */}
       <div className="w-full">
         <img
-          src="/banner.jpg"
+          src={bannerUrl}
           alt="Banner da loja"
           className="w-full h-32 object-cover object-center"
           style={{ minHeight: 100 }}
