@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProductById } from '../lib/supabase';
 import { Product as ProductType } from '../types/Product';
-import { useCart } from '../hooks/useCart';
+import { useCart } from '../contexts/CartContext';
 import { toast } from 'sonner';
 
 export function Products() {

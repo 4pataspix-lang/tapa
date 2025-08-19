@@ -1,7 +1,7 @@
 // filepath: src/pages/Checkout.tsx
 import { FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useCart } from '../hooks/useCart';
+import { useCart } from '../contexts/CartContext';
 import { createOrder } from '../lib/supabase';
 import { createPayment } from '../lib/nivusPay';
 import { toast } from 'sonner';
