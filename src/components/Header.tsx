@@ -26,21 +26,36 @@ export function Header() {
   return (
     <>
       {/* Banner dinâmico da loja */}
-      <div className="w-full m-0 p-0" style={{margin:0,padding:0,lineHeight:0}}>
+      <div className="w-full m-0 p-0" style={{margin:0,padding:0}}>
         {!bannerLoaded && (
           <div className="w-full flex items-center justify-center bg-gray-100 animate-pulse" style={{height:80,minHeight:80}}>
             <span className="text-xs text-gray-400">Carregando banner...</span>
           </div>
         )}
-        <img
-          src={bannerUrl}
-          alt="Banner da loja"
-          className="w-full object-contain object-top m-0 p-0 border-0"
-          style={{ minHeight: 80, width: '100%', margin: 0, padding: 0, display: 'block', position:'relative', top:0, left:0, zIndex:2, maxHeight: '160px', maxWidth: '100vw' }}
-          sizes="100vw"
-          onLoad={()=>setBannerLoaded(true)}
-          onError={()=>setBannerLoaded(true)}
-        />
+        <div style={{width:'100vw',overflow:'hidden',margin:0,padding:0}}>
+          <img
+            src={bannerUrl}
+            alt="Banner da loja"
+            className="block w-full m-0 p-0 border-0"
+            style={{
+              width:'100vw',
+              minHeight: 50,
+              maxHeight: 120,
+              height: 'auto',
+              margin:0,
+              padding:0,
+              objectFit:'cover',
+              objectPosition:'top',
+              background:'#fff',
+              display:'block',
+              border:'none',
+              boxShadow:'none',
+            }}
+            onLoad={()=>setBannerLoaded(true)}
+            onError={()=>setBannerLoaded(true)}
+            draggable={false}
+          />
+        </div>
       </div>
       <header className="bg-white shadow-md sticky top-0 z-40 m-0 p-0" style={{margin:0,padding:0}}>
         <div className="container mx-auto px-0 py-4 flex justify-between items-center m-0 p-0" style={{margin:0,padding:0}}>
