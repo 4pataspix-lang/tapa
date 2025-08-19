@@ -20,16 +20,16 @@ export function Header() {
   return (
     <>
       {/* Banner dinâmico da loja */}
-      <div className="w-full">
+      <div className="w-full m-0 p-0">
         <img
           src={bannerUrl}
           alt="Banner da loja"
-          className="w-full max-h-40 sm:max-h-56 md:max-h-72 lg:max-h-80 xl:max-h-96 object-contain object-top"
-          style={{ minHeight: 80, width: '100%' }}
+          className="w-full max-h-40 sm:max-h-56 md:max-h-72 lg:max-h-80 xl:max-h-96 object-contain object-top m-0 p-0 border-0"
+          style={{ minHeight: 80, width: '100%', margin: 0, padding: 0, display: 'block' }}
         />
       </div>
-      <header className="bg-white shadow-md sticky top-0 z-40">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+      <header className="bg-white shadow-md sticky top-0 z-40 m-0 p-0">
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center m-0 p-0">
           {/* Logo da loja */}
           <Link to="/" className="flex items-center">
             <img src={logoUrl} alt="Logo" className="h-10 w-auto mr-2" />
