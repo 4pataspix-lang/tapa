@@ -24,8 +24,8 @@ export function Header() {
         <img
           src={bannerUrl}
           alt="Banner da loja"
-          className="w-full h-32 object-cover object-center"
-          style={{ minHeight: 100 }}
+          className="w-full max-h-40 sm:max-h-56 md:max-h-72 lg:max-h-80 xl:max-h-96 object-contain object-top"
+          style={{ minHeight: 80, width: '100%' }}
         />
       </div>
       <header className="bg-white shadow-md sticky top-0 z-40">
