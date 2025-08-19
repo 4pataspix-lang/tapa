@@ -11,8 +11,11 @@ export function Header() {
   const cartItemCount = (items ?? []).reduce((sum, item) => sum + item.quantity, 0);
   const { settings } = useStore();
 
+
   // Banner dinâmico: usa o header_banner_url se existir, senão banner_url, senão fallback
   const bannerUrl = settings?.header_banner_url || settings?.banner_url || '/banner.jpg';
+  // Logo dinâmica: usa logo_url das configurações, senão fallback
+  const logoUrl = settings?.logo_url || '/logo.png';
 
   return (
     <>
@@ -29,7 +32,7 @@ export function Header() {
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           {/* Logo da loja */}
           <Link to="/" className="flex items-center">
-            <img src="/logo.png" alt="Logo" className="h-10 w-auto mr-2" />
+            <img src={logoUrl} alt="Logo" className="h-10 w-auto mr-2" />
             {/* Se quiser texto junto da logo, descomente a linha abaixo */}
             {/* <span className="text-2xl font-bold text-gray-800">Sua Loja</span> */}
           </Link>
