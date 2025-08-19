@@ -312,3 +312,17 @@ export interface StoreSettings {
 export interface CartItem extends Product {
   quantity: number;
 }
+
+export async function getProductById(id: string): Promise<Product | null> {
+  if (!supabase) return null;
+  const { data, error } = await supabase
+    .from('products')
+    .select('*')
+    .eq('id', id)
+    .single();
+  if (error) {
+    console.error('Erro ao buscar produto por ID:', error);
+    return null;
+  }
+  return data as Product;
+}
