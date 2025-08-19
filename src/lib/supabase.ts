@@ -326,3 +326,17 @@ export async function getProductById(id: string): Promise<Product | null> {
   }
   return data as Product;
 }
+
+export async function createOrder(order: Omit<Order, 'id' | 'created_at' | 'updated_at'> & { order_items: Omit<OrderItem, 'id' | 'created_at'>[] }) {
+  if (!supabase) return null;
+  const { data, error } = await supabase
+    .from('orders')
+    .insert([order])
+    .select()
+    .single();
+  if (error) {
+    console.error('Erro ao criar pedido:', error);
+    return null;
+  }
+  return data as Order;
+}
