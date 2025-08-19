@@ -1,5 +1,7 @@
 // filepath: src/components/Header.tsx
 
+
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingCart } from 'lucide-react';
 import { useCart } from '../contexts/CartContext';
@@ -12,24 +14,35 @@ export function Header() {
   const { settings } = useStore();
 
 
+
   // Banner dinâmico: usa o header_banner_url se existir, senão banner_url, senão fallback
   const bannerUrl = settings?.header_banner_url || settings?.banner_url || '/banner.jpg';
   // Logo dinâmica: usa logo_url das configurações, senão fallback
   const logoUrl = settings?.logo_url || '/logo.png';
 
+  // Estado de carregamento do banner
+  const [bannerLoaded, setBannerLoaded] = useState(false);
+
   return (
     <>
       {/* Banner dinâmico da loja */}
-      <div className="w-full m-0 p-0">
+      <div className="w-full m-0 p-0" style={{margin:0,padding:0,lineHeight:0}}>
+        {!bannerLoaded && (
+          <div className="w-full flex items-center justify-center bg-gray-100 animate-pulse" style={{height:80,minHeight:80}}>
+            <span className="text-xs text-gray-400">Carregando banner...</span>
+          </div>
+        )}
         <img
           src={bannerUrl}
           alt="Banner da loja"
           className="w-full max-h-40 sm:max-h-56 md:max-h-72 lg:max-h-80 xl:max-h-96 object-contain object-top m-0 p-0 border-0"
-          style={{ minHeight: 80, width: '100%', margin: 0, padding: 0, display: 'block' }}
+          style={{ minHeight: 80, width: '100%', margin: 0, padding: 0, display: 'block', position:'relative', top:0, left:0, zIndex:2 }}
+          onLoad={()=>setBannerLoaded(true)}
+          onError={()=>setBannerLoaded(true)}
         />
       </div>
-      <header className="bg-white shadow-md sticky top-0 z-40 m-0 p-0">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center m-0 p-0">
+      <header className="bg-white shadow-md sticky top-0 z-40 m-0 p-0" style={{margin:0,padding:0}}>
+        <div className="container mx-auto px-0 py-4 flex justify-between items-center m-0 p-0" style={{margin:0,padding:0}}>
           {/* Logo da loja */}
           <Link to="/" className="flex items-center">
             <img src={logoUrl} alt="Logo" className="h-10 w-auto mr-2" />
