@@ -10,21 +10,24 @@ export function Header() {
 
   return (
     <>
-      <div className="bg-black text-white text-center p-2 text-sm w-full">
-        Frete grátis para todo o Brasil
+      {/* Banner visual restaurado */}
+      <div className="w-full">
+        <img
+          src="/banner.jpg"
+          alt="Banner da loja"
+          className="w-full h-32 object-cover object-center"
+          style={{ minHeight: 100 }}
+        />
       </div>
       <header className="bg-white shadow-md sticky top-0 z-40">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <Link to="/" className="text-2xl font-bold text-gray-800">
-            Project Bolt
+          {/* Logo da loja */}
+          <Link to="/" className="flex items-center">
+            <img src="/logo.png" alt="Logo" className="h-10 w-auto mr-2" />
+            {/* Se quiser texto junto da logo, descomente a linha abaixo */}
+            {/* <span className="text-2xl font-bold text-gray-800">Sua Loja</span> */}
           </Link>
           <nav className="flex items-center space-x-6">
-            <Link to="/" className="text-gray-600 hover:text-blue-600">
-              Home
-            </Link>
-            <Link to="/admin" className="text-gray-600 hover:text-blue-600">
-              Admin
-            </Link>
             <Link to="/cart" className="relative">
               <ShoppingCart className="text-gray-600 hover:text-blue-600" />
               {cartItemCount > 0 && (
